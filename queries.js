@@ -29,10 +29,7 @@ async function connect(){
   process.exit();
 };
 
-const runQueries = async () => {
-  console.log('Queries running.')
-  // The functions calls to run queries in our db will go here as we write them.
-
+async function createTodo(){
   const newTodo = {
     name: "Do Mongoose Homework",
     isComplete: true
@@ -41,6 +38,21 @@ const runQueries = async () => {
   const createdTodo = await Todo.create(newTodo)
 
   console.log("created new todo: ", createdTodo)
+}
+
+async function getAllTodos(){
+
+  const allTodos = await Todo.find()
+  console.log("All Todos", allTodos)
+}
+
+const runQueries = async () => {
+  console.log('Queries running.')
+  // The functions calls to run queries in our db will go here as we write them.
+
+  // await createTodo()
+  await getAllTodos()
+  
 };
 
 connect()
