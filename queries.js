@@ -77,6 +77,16 @@ async function updateManyTodos(){
   console.log(updatedTodo)
 }
 
+async function deleteOneTodo(){
+  const deletedTodo = await Todo.deleteOne({isComplete:false})
+  console.log(deletedTodo)
+}
+
+async function deleteTodoById(){
+  const deletedTodo = await Todo.findByIdAndDelete("6772caac6ba3043b2dc7984d")
+  console.log(deletedTodo)
+}
+
 const runQueries = async () => {
   console.log('Queries running.')
   // The functions calls to run queries in our db will go here as we write them.
@@ -87,7 +97,9 @@ const runQueries = async () => {
   // await getTodoById()
   // await updateOneTodo()
   // await updateOneTodo2()
-  await updateManyTodos()
+  // await updateManyTodos()
+  // await deleteOneTodo()
+  await deleteTodoById()
 
   
 };
